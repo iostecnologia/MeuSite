@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ios Tecnologia - Criação de Sites Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { scroll-behavior: smooth; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.6); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+
+        .fade-in-up { animation: fadeInUp 0.8s ease-out; }
+        .slide-in-right { animation: slideInRight 0.8s ease-out; }
+        .float { animation: float 3s ease-in-out infinite; }
+        .glow { animation: glow 3s ease-in-out infinite; }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        nav { transition: all 0.3s ease; }
+        nav.scrolled {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-white overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-2xl font-bold gradient-text">Ios Tecnologia</div>
+            <div class="hidden md:flex gap-8">
+                <a href="#servicos" class="text-sm hover:text-blue-400 transition">Serviços</a>
+                <a href="#portfolio" class="text-sm hover:text-blue-400 transition">Portfólio</a>
+                <a href="#depoimentos" class="text-sm hover:text-blue-400 transition">Depoimentos</a>
+                <a href="#precos" class="text-sm hover:text-blue-400 transition">Preços</a>
+                <a href="#contato" class="text-sm hover:text-blue-400 transition">Contato</a>
+            </div>
+            <button onclick="document.getElementById('contato').scrollIntoView()" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg transition">
+                Começar
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+        <div class="grid-pattern absolute inset-0 opacity-30"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-purple-900/20"></div>
+
+        <div class="relative z-10 max-w-6xl mx-auto px-4 md:px-8 text-center">
+            <div class="fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    <span class="gradient-text">Criação de Sites</span><br>
+                    <span>que Convertem</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Transformamos sua visão em experiências digitais elegantes, modernas e altamente funcionais.
+                </p>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <button onclick="document.getElementById('contato').scrollIntoView()" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg font-semibold transition transform hover:scale-105">
+                        Iniciar Projeto
+                    </button>
+                    <button onclick="document.getElementById('portfolio').scrollIntoView()" class="glass-effect px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition">
+                        Ver Portfólio
+                    </button>
+                </div>
+            </div>
+
+            <!-- Floating Cards -->
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                <div class="glass-effect p-6 rounded-2xl hover-lift float" style="animation-delay: 0s">
+                    <div class="text-3xl mb-2">⚡</div>
+                    <h3 class="font-semibold mb-2">Performance</h3>
+                    <p class="text-sm text-gray-400">Sites otimizados para velocidade máxima</p>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl hover-lift float" style="animation-delay: 0.2s">
+                    <div class="text-3xl mb-2">📱</div>
+                    <h3 class="font-semibold mb-2">Responsivo</h3>
+                    <p class="text-sm text-gray-400">Perfeito em todos os dispositivos</p>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl hover-lift float" style="animation-delay: 0.4s">
+                    <div class="text-3xl mb-2">🎨</div>
+                    <h3 class="font-semibold mb-2">Design</h3>
+                    <p class="text-sm text-gray-400">Estética premium e elegante</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-20 px-4 md:px-8 relative">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center gradient-text">Nossos Serviços</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Soluções completas para sua presença digital</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center mb-4 group-hover:glow">
+                        <span class="text-2xl">🌐</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Landing Pages</h3>
+                    <p class="text-gray-400 mb-4">Páginas otimizadas para conversão com design moderno e animações envolventes.</p>
+                    <div class="inline-block px-4 py-2 bg-blue-600/20 text-blue-300 rounded-lg text-sm">R$ 1.500 - R$ 3.000</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center mb-4 group-hover:glow">
+                        <span class="text-2xl">🛒</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">E-commerce</h3>
+                    <p class="text-gray-400 mb-4">Lojas virtuais completas com integração de pagamento e gestão de produtos.</p>
+                    <div class="inline-block px-4 py-2 bg-blue-600/20 text-blue-300 rounded-lg text-sm">R$ 3.500 - R$ 7.000</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center mb-4 group-hover:glow">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Dashboards</h3>
+                    <p class="text-gray-400 mb-4">Painéis analíticos personalizados com visualização de dados em tempo real.</p>
+                    <div class="inline-block px-4 py-2 bg-blue-600/20 text-blue-300 rounded-lg text-sm">R$ 5.000 - R$ 12.000</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center mb-4 group-hover:glow">
+                        <span class="text-2xl">✨</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Portfólios</h3>
+                    <p class="text-gray-400 mb-4">Sites portfolios elegantes para mostrar seu trabalho de forma profissional.</p>
+                    <div class="inline-block px-4 py-2 bg-blue-600/20 text-blue-300 rounded-lg text-sm">R$ 2.000 - R$ 4.000</div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center mb-4 group-hover:glow">
+                        <span class="text-2xl">🔧</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Manutenção</h3>
+                    <p class="text-gray-400 mb-4">Suporte contínuo, atualizações e otimizações para seu site.</p>
+                    <div class="inline-block px-4 py-2 bg-blue-600/20 text-blue-300 rounded-lg text-sm">R$ 300/mês</div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift group">
+                    <div class="w-12 h-12 glass-effect rounded-lg flex items-center justify-center mb-4 group-hover:glow">
+                        <span class="text-2xl">📈</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">SEO</h3>
+                    <p class="text-gray-400 mb-4">Otimização para buscadores e estratégia de marketing digital.</p>
+                    <div class="inline-block px-4 py-2 bg-blue-600/20 text-blue-300 rounded-lg text-sm">R$ 1.000 - R$ 2.500</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfólio -->
+    <section id="portfolio" class="py-20 px-4 md:px-8 relative bg-slate-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center gradient-text">Nossos Projetos</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Veja alguns de nossos trabalhos recentes</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Projeto 1 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-60 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl overflow-hidden hover-lift">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🚀</div>
+                                <h3 class="text-xl font-semibold">TechStartup</h3>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button class="bg-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Ver Projeto</button>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">TechStartup</h4>
+                        <p class="text-gray-400 text-sm">Landing page moderna com animações dinâmicas</p>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-60 bg-gradient-to-br from-pink-600 to-rose-600 rounded-2xl overflow-hidden hover-lift">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">💄</div>
+                                <h3 class="text-xl font-semibold">BeautyBrand</h3>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button class="bg-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Ver Projeto</button>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">BeautyBrand</h4>
+                        <p class="text-gray-400 text-sm">E-commerce com design elegante e checkout otimizado</p>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-60 bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl overflow-hidden hover-lift">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🏢</div>
+                                <h3 class="text-xl font-semibold">Corporate</h3>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button class="bg-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Ver Projeto</button>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">Corporate</h4>
+                        <p class="text-gray-400 text-sm">Site corporativo com CMS integrado</p>
+                    </div>
+                </div>
+
+                <!-- Projeto 4 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-60 bg-gradient-to-br from-amber-600 to-orange-600 rounded-2xl overflow-hidden hover-lift">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🍔</div>
+                                <h3 class="text-xl font-semibold">FoodApp</h3>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button class="bg-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Ver Projeto</button>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">FoodApp</h4>
+                        <p class="text-gray-400 text-sm">Plataforma de delivery com integração de pagamento</p>
+                    </div>
+                </div>
+
+                <!-- Projeto 5 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-60 bg-gradient-to-br from-violet-600 to-indigo-600 rounded-2xl overflow-hidden hover-lift">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🎓</div>
+                                <h3 class="text-xl font-semibold">EduTech</h3>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button class="bg-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Ver Projeto</button>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">EduTech</h4>
+                        <p class="text-gray-400 text-sm">Plataforma de cursos online com memberships</p>
+                    </div>
+                </div>
+
+                <!-- Projeto 6 -->
+                <div class="group cursor-pointer">
+                    <div class="relative h-60 bg-gradient-to-br from-cyan-600 to-blue-600 rounded-2xl overflow-hidden hover-lift">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="text-6xl mb-4">🏥</div>
+                                <h3 class="text-xl font-semibold">HealthHub</h3>
+                            </div>
+                        </div>
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                            <button class="bg-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Ver Projeto</button>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-semibold mb-2">HealthHub</h4>
+                        <p class="text-gray-400 text-sm">Portal de saúde com agendamento online</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Depoimentos -->
+    <section id="depoimentos" class="py-20 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center gradient-text">O que Nossos Clientes Dizem</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Satisfação dos clientes é nossa prioridade</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Depoimento 1 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift">
+                    <div class="flex gap-1 mb-4">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "A WebCreative transformou nossa presença digital. O site ficou absolutamente impressionante e nossas vendas aumentaram em 150%!"
+                    </p>
+                    <div>
+                        <h4 class="font-semibold">João Silva</h4>
+                        <p class="text-gray-400 text-sm">CEO, TechStartup</p>
+                    </div>
+                </div>
+
+                <!-- Depoimento 2 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift">
+                    <div class="flex gap-1 mb-4">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "Profissionalismo, qualidade e atenção aos detalhes. A equipe entendeu perfeitamente a visão da nossa marca. Recomendo!"
+                    </p>
+                    <div>
+                        <h4 class="font-semibold">Maria Santos</h4>
+                        <p class="text-gray-400 text-sm">Fundadora, BeautyBrand</p>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift">
+                    <div class="flex gap-1 mb-4">
+                        <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+                    </div>
+                    <p class="text-gray-300 mb-6">
+                        "O site é rápido, bonito e funciona perfeitamente em todos os dispositivos. Estamos muito satisfeitos com o resultado final."
+                    </p>
+                    <div>
+                        <h4 class="font-semibold">Carlos Mendes</h4>
+                        <p class="text-gray-400 text-sm">Gerente, Corporate Solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços -->
+    <section id="precos" class="py-20 px-4 md:px-8 relative bg-slate-900/50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center gradient-text">Tabela de Preços</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">Planos flexíveis para qualquer necessidade</p>
+
+            <!-- Toggle -->
+            <div class="flex justify-center mb-12">
+                <div class="glass-effect p-1 rounded-lg flex">
+                    <button onclick="togglePricing('mensal')" class="plano-btn active px-6 py-2 rounded transition font-semibold" data-plan="mensal">Mensal</button>
+                    <button onclick="togglePricing('anual')" class="plano-btn px-6 py-2 rounded transition font-semibold" data-plan="anual">Anual (20% OFF)</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plano Starter -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift relative">
+                    <h3 class="text-2xl font-bold mb-2">Starter</h3>
+                    <p class="text-gray-400 mb-6">Perfeito para pequenos projetos</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold" id="starter-price">R$ 1.500</span>
+                        <span class="text-gray-400">/mês</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Até 5 páginas
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Design responsivo
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> SEO básico
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Suporte por email
+                        </li>
+                        <li class="flex items-center gap-3 opacity-50">
+                            <span class="text-gray-600">✗</span> E-commerce
+                        </li>
+                    </ul>
+                    <button class="w-full bg-slate-800 hover:bg-slate-700 py-3 rounded-lg font-semibold transition">Escolher Plano</button>
+                </div>
+
+                <!-- Plano Professional -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift border-2 border-blue-500 relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 px-4 py-1 rounded-full text-sm font-semibold">Mais Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Professional</h3>
+                    <p class="text-gray-400 mb-6">A escolha ideal para a maioria</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold" id="pro-price">R$ 3.500</span>
+                        <span class="text-gray-400">/mês</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Até 20 páginas
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Design customizado
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> SEO avançado
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Integrações
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> E-commerce básico
+                        </li>
+                    </ul>
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition">Escolher Plano</button>
+                </div>
+
+                <!-- Plano Enterprise -->
+                <div class="glass-effect p-8 rounded-2xl hover-lift">
+                    <h3 class="text-2xl font-bold mb-2">Enterprise</h3>
+                    <p class="text-gray-400 mb-6">Para grandes operações</p>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold" id="enterprise-price">R$ 8.000</span>
+                        <span class="text-gray-400">/mês</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Páginas ilimitadas
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Design premium
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> SEO expert
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> Integrações custom
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-blue-400">✓</span> E-commerce completo
+                        </li>
+                    </ul>
+                    <button class="w-full bg-slate-800 hover:bg-slate-700 py-3 rounded-lg font-semibold transition">Consulte-nos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-20 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center gradient-text">Sobre a Ios Tecnologia</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">Transformando Ideias em Realidade</h3>
+                    <p class="text-gray-300 mb-4">
+                        Somos uma agência criativa especializada em criar experiências digitais que não apenas impressionam, mas também convertem.
+                    </p>
+                    <p class="text-gray-300 mb-4">
+                        Com mais de 50 projetos entregues, temos ajudado empresas de todos os tamanhos a alcançar seus objetivos online.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mt-8">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-400">50+</div>
+                            <p class="text-gray-400">Projetos Entregues</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl font-bold text-blue-400">98%</div>
+                            <p class="text-gray-400">Satisfação do Cliente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="glass-effect p-6 rounded-2xl hover-lift">
+                        <h4 class="font-semibold mb-2 text-blue-400">Estratégia</h4>
+                        <p class="text-gray-400">Começamos com uma estratégia sólida que alinha o design com seus objetivos de negócio.</p>
+                    </div>
+                    <div class="glass-effect p-6 rounded-2xl hover-lift">
+                        <h4 class="font-semibold mb-2 text-blue-400">Design</h4>
+                        <p class="text-gray-400">Criamos designs elegantes e responsivos que refletem a identidade da sua marca.</p>
+                    </div>
+                    <div class="glass-effect p-6 rounded-2xl hover-lift">
+                        <h4 class="font-semibold mb-2 text-blue-400">Desenvolvimento</h4>
+                        <p class="text-gray-400">Desenvolvemos sites rápidos, seguros e otimizados para conversão.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 md:px-8 relative">
+        <div class="max-w-4xl mx-auto glass-effect p-12 md:p-16 rounded-3xl text-center border-2 border-blue-500/30">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 gradient-text">Pronto para Começar?</h2>
+            <p class="text-xl text-gray-300 mb-8">
+                Vamos criar algo extraordinário para sua marca. Entre em contato conosco hoje mesmo.
+            </p>
+            <button onclick="document.getElementById('contato').scrollIntoView()" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-lg font-semibold text-lg transition transform hover:scale-105">
+                Agendar Consulta Gratuita
+            </button>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-20 px-4 md:px-8 relative bg-slate-900/50">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center gradient-text">Entre em Contato</h2>
+            <p class="text-center text-gray-400 mb-12">Envie uma mensagem e responderemos em breve</p>
+
+            <form onsubmit="handleSubmit(event)" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Seu Nome" required class="glass-effect px-6 py-3 rounded-lg border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-white placeholder-gray-500">
+                    <input type="email" placeholder="seu@email.com" required class="glass-effect px-6 py-3 rounded-lg border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-white placeholder-gray-500">
+                </div>
+                <input type="text" placeholder="Assunto" required class="w-full glass-effect px-6 py-3 rounded-lg border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-white placeholder-gray-500">
+                <textarea placeholder="Sua mensagem..." rows="6" required class="w-full glass-effect px-6 py-3 rounded-lg border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 transition text-white placeholder-gray-500 resize-none"></textarea>
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold text-lg transition transform hover:scale-105">
+                    Enviar Mensagem
+                </button>
+            </form>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-effect p-6 rounded-2xl text-center">
+                    <div class="text-3xl mb-3">📧</div>
+                    <h4 class="font-semibold mb-2">Email</h4>
+                    <p class="text-gray-400 text-sm break-words">iostecnologiadigital@gmail.com</p>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl text-center">
+                    <div class="text-3xl mb-3">📱</div>
+                    <h4 class="font-semibold mb-2">WhatsApp</h4>
+                    <p class="text-gray-400">(85) 99101-7409</p>
+                </div>
+                <div class="glass-effect p-6 rounded-2xl text-center">
+                    <div class="text-3xl mb-3">📍</div>
+                    <h4 class="font-semibold mb-2">Local</h4>
+                    <p class="text-gray-400">Fortaleza-CE</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 py-8 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <p class="text-gray-400 text-sm">© 2026 Ios Tecnologia. Todos os direitos reservados.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Privacy</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Termos</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Twitter</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition text-sm">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Menu links smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Pricing toggle
+        function togglePricing(plan) {
+            const buttons = document.querySelectorAll('.plano-btn');
+            buttons.forEach(btn => btn.classList.remove('active', 'bg-blue-600', 'bg-blue-700'));
+
+            if (plan === 'mensal') {
+                document.getElementById('starter-price').textContent = 'R$ 1.500';
+                document.getElementById('pro-price').textContent = 'R$ 3.500';
+                document.getElementById('enterprise-price').textContent = 'R$ 8.000';
+            } else {
+                document.getElementById('starter-price').textContent = 'R$ 14.400';
+                document.getElementById('pro-price').textContent = 'R$ 33.600';
+                document.getElementById('enterprise-price').textContent = 'R$ 76.800';
+            }
+
+            event.target.classList.add('active', 'bg-blue-600');
+        }
+
+        // Contact form
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Obrigado! Em breve entraremos em contato.');
+            e.target.reset();
+        }
+
+        // Smooth animations on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in-up');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
