@@ -1,0 +1,46 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Docker
+.docker/
+
+# WordPress
+html/wp-content/uploads/
+html/wp-content/backup-*
+html/wp-content/cache/
+html/.htaccess
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Database backups (local only)
+db/*.sql.bak
+db/*.zip.bak
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Dependencies
+node_modules/
+vendor/
+
+# Cache
+.cache/
+*.cache

@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: wordpress_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-sefandb001}
+      MYSQL_USER: ${MYSQL_USER:-sefanuser001}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-secure_password_change_me}
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./db/SEFAN_2023_07_09_1688940967_8abfb88_wpdb.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  wordpress:
+    image: wordpress:latest
+    container_name: wordpress_app
+    restart: always
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE:-sefandb001}
+      WORDPRESS_DB_USER: ${MYSQL_USER:-sefanuser001}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD:-secure_password_change_me}
+      WORDPRESS_TABLE_PREFIX: wp_
+    volumes:
+      - ./html:/var/www/html
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - wordpress_network
+
+  # Nginx (opcional - para produção com SSL)
+  # nginx:
+  #   image: nginx:alpine
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./html:/var/www/html
+  #     - ./nginx.conf:/etc/nginx/nginx.conf
+  #   depends_on:
+  #     - wordpress
+
+volumes:
+  db_data:
+    driver: local
+
+networks:
+  wordpress_network:
+    driver: bridge
